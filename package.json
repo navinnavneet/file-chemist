@@ -1,0 +1,33 @@
+{
+  "name": "file-chemist",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@reduxjs/toolkit": "^1.6.0",
+    "@silvia-odwyer/photon": "^0.3.11",
+    "@vieolo/file-management": "git+ssh://git@github.com/Vieolo/file-management-js.git#0.2.0",
+    "@vieolo/vieolo-ui": "github:Vieolo/vieolo-ui#0.8.3",
+    "axios": "^0.21.1",
+    "compressorjs": "^1.0.7",
+    "jszip": "^3.7.0",
+    "next": "11.0.1",
+    "next-redux-wrapper": "^7.0.2",
+    "next-transpile-modules": "^8.0.0",
+    "pdf-lib": "^1.16.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-redux": "^7.2.4",
+    "sass": "^1.35.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.11",
+    "typescript": "^4.3.5"
+  }
+}

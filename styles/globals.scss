@@ -1,0 +1,405 @@
+@import "../node_modules/@vieolo/vieolo-ui/style/_vieolo-ui.scss";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+/* ===== global variables ===== */
+$full-width: 100vw;
+$content-padding: 80px;
+$primary-color: #374837;
+$primary-light: #93ac93;
+$primary-background: #dbe3db;
+$secondory-color: #ffcc29;
+$primary-grey: #c4c4c4;
+$border-thick: 2px solid $primary-light;
+$border-thin: 1px solid $primary-light;
+$border-radius: 16px;
+$letter-spacing: 0.5px;
+$line-height: 1.3;
+$title-font-large: 40px;
+$title-font: 32px;
+$para-font: 16px;
+$font-small: 12px;
+$font-ultra-small: 10px;
+
+/* ===== horizontal flex ===== */
+
+@mixin horizontalFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin fourGridColumn {
+  height: calc(100vh - 120px);
+  display: grid;
+  grid-template-columns: 3.48fr 3.1fr 3.1fr 1fr;
+  grid-template-rows: 1fr 2.47fr 2.13fr 2.47fr;
+  grid-gap: 24px 64px;
+  padding: 0 48px 16px 80px;
+  margin-top: 96px;
+}
+
+.btn-fun {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.vieolo-file-input {
+  border: 2px dashed #93ac93;
+  border-radius: 20px;
+}
+
+/* ===== link card ===== */
+
+.link-card {
+  width: 320px;
+  height: 192px;
+  border: $border-thin;
+  border-radius: $border-radius;
+  padding: 32px 24px 40px;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+  &__header {
+    @include horizontalFlex;
+  }
+  h2 {
+    color: $primary-color;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 12px;
+  }
+  p {
+    color: $primary-color;
+    font-weight: 300;
+  }
+  button {
+    background: none;
+    border: none;
+    color: $secondory-color;
+    cursor: pointer;
+    transform: translateY(-12px);
+  }
+}
+
+/* ===== privacy and environment ===== */
+
+@mixin otherPages {
+  width: 60vw;
+  margin-left: 80px;
+  letter-spacing: $letter-spacing;
+  margin-top: 96px;
+  h1 {
+    font-size: $title-font;
+    font-weight: 400;
+  }
+  p {
+    font-size: $para-font;
+    line-height: $line-height;
+    font-weight: 300;
+    text-align: justify;
+  }
+  button {
+    background: white;
+    border-radius: 4px;
+  }
+  button:hover {
+    background: $primary-background;
+  }
+}
+
+.privacy-page {
+  &__content {
+    @include otherPages;
+  }
+  &__subheading {
+    margin-bottom: -10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: green;
+  }
+}
+
+.environment-page {
+  &__content {
+    @include otherPages;
+  }
+}
+
+/* ===== navbar ===== */
+
+.navbar {
+  width: 100vw;
+  height: 72px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 8px #efefef;
+  background: white;
+  &__logo-container {
+    margin-left: 80px;
+    color: #000;
+    background: #dbe3db;
+    width: 163px;
+    height: 40px;
+    border-radius: 0 4px 4px 20px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 12px;
+    align-items: center;
+    .logo {
+      height: 40px;
+    }
+    .logo-text {
+      letter-spacing: 0.8px;
+      font-weight: 400;
+    }
+  }
+  &__links {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    padding: 5px 9px 5px 9px;
+    border-radius: 4px;
+    font-size: 14px;
+    background: none;
+    border: none;
+    transition: all 0.4s ease-in;
+  }
+
+  .link:hover {
+    background: $primary-background;
+    cursor: pointer;
+  }
+
+  .icon {
+    margin-right: 5px;
+  }
+  .green {
+    color: green;
+  }
+}
+
+/* ===== home-page ===== */
+
+@mixin advertisement {
+  background: $primary-grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-page {
+  &__grid-four-column {
+    @include fourGridColumn;
+    grid-template-areas:
+      "title . . advertisementRight"
+      "fileInput selectedFiles availableActions advertisementRight"
+      "security selectedFiles availableActions advertisementRight"
+      "advertisementLeft selectedFiles availableActions advertisementRight";
+  }
+  &__title {
+    grid-area: title;
+    h1 {
+      margin: 8px 0 0 0;
+      font-size: $title-font-large;
+      p {
+        font-weight: 300;
+        margin-top: 6px;
+      }
+    }
+  }
+  &__file-input {
+    grid-area: fileInput;
+  }
+  &__security {
+    grid-area: security;
+    background: $primary-background;
+    border-radius: $border-radius;
+    color: $primary-color;
+    padding-left: 24px;
+    p {
+      width: 90%;
+      font-size: $para-font;
+      line-height: $line-height;
+      letter-spacing: $letter-spacing;
+    }
+    h2 {
+      font-weight: 400;
+    }
+  }
+  &__advertisement-left {
+    grid-area: advertisementLeft;
+    @include advertisement;
+  }
+  &__advertisement-right {
+    grid-area: advertisementRight;
+    @include advertisement;
+  }
+  &__selected-files {
+    grid-area: selectedFiles;
+    border: $border-thick;
+    border-radius: $border-radius;
+    color: $primary-color;
+    height: auto;
+    overflow: scroll;
+    ul {
+      list-style-type: none;
+      margin: 16px 0 0;
+      padding: 0;
+    }
+  }
+  &__link-card-container {
+    max-width: 85vw;
+    margin: 48px auto 12px;
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: $border-thin;
+    box-sizing: border-box;
+  }
+  &__container-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 12px;
+    height: 32px;
+    p {
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__available-actions-container {
+    grid-area: availableActions;
+    border: $border-thick;
+    border-radius: $border-radius;
+    text-align: center;
+    color: $primary-color;
+  }
+}
+
+.available-action {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px;
+  padding: 6px 8px;
+  background: $primary-background;
+  border-radius: $border-radius;
+  color: #000;
+  font-size: $font-small;
+  &__left {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__action-text {
+    transform: translateX(-24px);
+  }
+}
+
+.file-row {
+  height: 78px;
+  display: grid;
+  grid-template-columns: 1fr 1.8fr 1.1fr;
+  grid-template-rows: 1fr 1.2fr;
+  grid-template-areas:
+    "thumbnail fileTitle  fileRowFun"
+    "thumbnail fileInfo fileRowFun";
+  grid-gap: 5px 12px;
+  text-align: left;
+  margin: 10px 12px;
+  &__thumbnail {
+    grid-area: thumbnail;
+    width: 64px;
+    height: 64px;
+    background: $primary-color;
+    margin: auto 0;
+    border-radius: 6px;
+  }
+  &__file-type {
+    grid-area: fileTitle;
+    margin: 8px 0 5px;
+    text-transform: uppercase;
+  }
+  &__file-info {
+    grid-area: fileInfo;
+    transform: translateY(-8px);
+    p {
+      margin: 0;
+      font-size: $font-ultra-small;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .file-size {
+      color: $primary-grey;
+    }
+  }
+  &__btn-fun-container {
+    grid-area: fileRowFun;
+    @include horizontalFlex;
+  }
+}
+
+/* ===== pdf page =====  */
+
+.pdf-page {
+  width: $full-width;
+  &__content {
+    padding: $content-padding;
+  }
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.file-row-static-column {
+  width: 220px;
+  min-height: 600px;
+  border: $border-thick;
+  border-radius: $border-radius;
+  list-style: none;
+  padding: 12px;
+  margin-left: 64px;
+}
+
+/* ===== jpg page =====  */
+
+.jpg-page {
+  width: $full-width;
+  &__content {
+    padding: $content-padding;
+  }
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
